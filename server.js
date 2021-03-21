@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-const projectData = {};
+const projectData = [{}];
 // Express to run server and routes
 const express = require('express');
 
@@ -30,54 +30,38 @@ const port = 8080;
 
 const server = app.listen(port, ()=>{console.log(`localhist is runnung`);console.log(`localhost:${port}`)})
 
-//const appData = {weather:'cold',feel:'cold'};
+const appData = [{zip:40,feel:'cold'}];
 
 // Initialize all route with a callback function
+app.get('/all', getData)
 
-app.get('/all',function(req,res){
+// Callback function to complete GET '/all'\
 
-    res.send('WeatherJournal');
-});
+function getData (req,res){
+    res.send(projectData);
+   
+    console.log(projectData)
 
-// Callback function to complete GET '/all'
+}
 
 // Post Route
 
-const projdata = [];
-
-/*
 app.post('/all',function(req,res){
     res.send('post recieved')
 });
 
-app.post('/all', weather);
 
-function weather(req, res){
-    let data = req.body;
-    console.log(data);
-    Projdata.push(data);
-}
+app.post('/all', addWeather);
 
-const weatherData = {
-    weather:'winter',
-    feel:'cold'
-}
+function addWeather (req,res){
 
-app.get('/allWeatherData',function(req,res){
-    res.send(weateherData);
-    console.log(weatherData)
-})
-*/
-app.post('/addWeather', addWeather);
-
-function addWeather(req,res){
-
-  newEntry = {
-    zip: req.body.zip,
-    feel: req.body.feel,
-    fav: req.body.fav
+   let newEntry = {
+   date : req.body.date,
+   temp: req.body.temp,
+   content:req.body.content
   }
 
-  projdata.push(newEntry);
-  console.log(projdata)
+  projectData.push(newEntry);
+  res.send(projectData);
+  console.log(projectData)
 }
