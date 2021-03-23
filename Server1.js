@@ -30,7 +30,8 @@ function addWeather(req,res){
 
         date : req.body.date,
         temp: req.body.temp,
-        content:req.body.content
+        content:req.body.content,
+        city:req.body.city
     }
 
     projectData.push(newEntry);

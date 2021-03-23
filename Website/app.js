@@ -2,14 +2,16 @@
 
 const  baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
 const apiKey = '&APPID=129c5fd96e82a383208578208624503f';
-let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+
+let date = new Date();
+
+let newDate = date.getDate() +'-' + ( date.getMonth() +1) +'-'+ date.getFullYear();
 
 // Event listener to add function to existing HTML DOM element 
 document.getElementById('generate').addEventListener('click', performAction);
 
-/* Function called by event listener*/
 
+/* Function called by event listener*/
 
 function performAction() {
   let newZip = document.getElementById('zip').value;
@@ -18,7 +20,7 @@ function performAction() {
     getZip(baseURL, newZip, apiKey).then(function (data){
     
         console.log(data);
-        postData('/addWeather', {date:newDate,temp:data.main.temp,content:feel});
+        postData('/addWeather', {date:newDate,temp:data.main.temp,content:feel,city:data.name});
         updateUI()
     })
     
@@ -68,9 +70,9 @@ let postData = async ( url = '', data = {})=>{
     }
 }
 
-postData('/addWeather', {zip:23,feel:'cold'});
+postData('/addWeather', {zip:2233,feel:'cold'});
 
-postData('/addWeather', {zip:45,feel:'worm'});
+postData('/addWeather', {zip:4235,feel:'worm'});
 
 
 /* Function to GET Project Data */
@@ -82,6 +84,8 @@ const updateUI = async () => {
       document.getElementById('date').innerHTML = `date : ${allData[allData.length-1].date}`;
       document.getElementById('temp').innerHTML = `tempe: ${allData[allData.length-1].temp}`;
       document.getElementById('content').innerHTML = `content: i feel ${allData[allData.length-1].content}`;
+      document.getElementById('city').innerHTML = `city:  ${allData[allData.length-1].city}`
+
   
     }catch(error){
       console.log("error", error);
