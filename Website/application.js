@@ -71,7 +71,7 @@ const updateUI = async() => {
 
         document.getElementById('date').innerHTML = `date : ${bigContainer[bigContainer.length - 1].date}`;
         document.getElementById('temp').innerHTML = `temp : ${bigContainer[bigContainer.length - 1].temp}`;
-        document.getElementById('content').innerHTML = `I Feel : ${bigContainer[bigContainer.length - 1].content}`;
+        document.getElementById('content').innerHTML = `I Feel  ${bigContainer[bigContainer.length - 1].content}`;
 
 
     } catch (error) {

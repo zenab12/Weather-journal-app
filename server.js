@@ -28,7 +28,7 @@ function addTheWeather(req, res) {
     }
 
     projectData.push(Container);
-    req.send(projectData);
+    res.send(projectData);
 
 
 }
