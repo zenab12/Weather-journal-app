@@ -3,4 +3,4 @@ asynchronous web app that uses Web API and user data to dynamically update the U
 
 
 ## live demo 
- https://zenab12.github.io/Weather-journal-app/
+ https://zenab12.github.io/Weather-journal-app/Website
